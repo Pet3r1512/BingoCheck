@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Grid, Stack, TextField, Typography } from "@mui/material";
+import { Stack, TextField } from "@mui/material";
 import z from "zod";
-import { Counter } from "~/components/Counter";
 import useGetTodayDate from "~/hooks/useGetTodayDate";
 
 export const Route = createFileRoute("/")({
