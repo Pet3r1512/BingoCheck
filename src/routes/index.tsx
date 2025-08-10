@@ -14,15 +14,21 @@ function RouteComponent() {
   const currentDate = useGetTodayDate();
 
   return (
-    <Stack direction={"column"} gap={2} alignItems="center">
+    <Stack direction={"column"} paddingInline={4} gap={2} alignItems="center">
       <TextField
         id="standard-basic"
         label="Date"
         variant="standard"
         disabled
+        fullWidth
         value={currentDate}
       />
-      <TextField id="standard-basic" label="Staff Name" variant="standard" />
+      <TextField
+        fullWidth
+        id="standard-basic"
+        label="Staff Name"
+        variant="standard"
+      />
     </Stack>
   );
 }
