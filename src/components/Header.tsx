@@ -10,14 +10,9 @@ const StyledCustomLink = styled(CustomLink)(
 export function Header() {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        sx={{
-          paddingBlock: 4,
-        }}
-        position="static"
-      >
+      <AppBar position="static">
         <Toolbar sx={{ gap: 2 }}>
-          <StyledCustomLink fontSize={48} to="/">
+          <StyledCustomLink fontSize={24} to="/">
             Bingo Check
           </StyledCustomLink>
         </Toolbar>
