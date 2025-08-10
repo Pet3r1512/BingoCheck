@@ -1,5 +1,4 @@
 /// <reference types="vite/client" />
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import {
   HeadContent,
   Outlet,
@@ -61,7 +60,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           </Container>
         </Providers>
 
-        <TanStackRouterDevtools position="bottom-right" />
         <Scripts />
       </body>
     </html>
