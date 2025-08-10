@@ -26,8 +26,9 @@ export default function SignUpForm() {
         id="standard-basic"
         label="Staff Name"
         variant="standard"
+        required
       />
-      <Button fullWidth sx={{ marginTop: 2 }} variant="contained">
+      <Button type="submit" fullWidth sx={{ marginTop: 2 }} variant="contained">
         Next Step
       </Button>
     </Stack>
