@@ -12,8 +12,12 @@ import fontsourceVariableRobotoCss from "@fontsource-variable/roboto?url";
 import React from "react";
 import { theme } from "~/setup/theme";
 import { Header } from "~/components/Header";
+import { QueryClient } from "@tanstack/react-query";
+import { createRootRouteWithContext } from "@tanstack/react-router";
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient;
+}>()({
   head: () => ({
     links: [{ rel: "stylesheet", href: fontsourceVariableRobotoCss }],
   }),
