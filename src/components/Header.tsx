@@ -12,7 +12,9 @@ export function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar sx={{ gap: 2 }}>
-          <StyledCustomLink to="/">Bingo Check</StyledCustomLink>
+          <StyledCustomLink fontSize={48} to="/">
+            Bingo Check
+          </StyledCustomLink>
         </Toolbar>
       </AppBar>
     </Box>
