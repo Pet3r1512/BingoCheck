@@ -59,7 +59,13 @@ export default function SignUpForm() {
           setTotalBox(parseInt(e.target.value));
         }}
       />
-      <Button type="submit" fullWidth sx={{ marginTop: 2 }} variant="contained">
+      <Button
+        onClick={handleClick}
+        type="submit"
+        fullWidth
+        sx={{ marginTop: 2 }}
+        variant="contained"
+      >
         Next Step
       </Button>
     </Stack>
