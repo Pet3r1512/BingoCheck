@@ -28,6 +28,14 @@ export default function SignUpForm() {
         variant="standard"
         required
       />
+      <TextField
+        fullWidth
+        type="number"
+        id="standard-basic"
+        label="Total number of boxes"
+        variant="standard"
+        required
+      />
       <Button type="submit" fullWidth sx={{ marginTop: 2 }} variant="contained">
         Next Step
       </Button>
