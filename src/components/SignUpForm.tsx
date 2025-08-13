@@ -1,19 +1,30 @@
-import { convexQuery } from "@convex-dev/react-query";
 import { Button, Stack, TextField } from "@mui/material";
 import { api } from "convex/_generated/api";
-import { useMutation } from "convex/react";
 import { useState } from "react";
 import useGetTodayDate from "~/hooks/useGetTodayDate";
+import ScatterPlotIcon from "@mui/icons-material/ScatterPlot";
+import { useMutation } from "@tanstack/react-query";
+import { useConvex } from "convex/react";
 
 export default function SignUpForm() {
+  const convex = useConvex();
+
   const [staffName, setStaffName] = useState<string>("");
   const [totalBox, setTotalBox] = useState<number>(0);
   const currentDate = useGetTodayDate();
 
-  const deliveryMutation = useMutation(api.delivery.createDelivery);
+  const deliveryMutation = useMutation({
+    mutationFn: async (variables: {
+      date: string;
+      staffName: string;
+      totalBox: number;
+    }) => {
+      return await convex.mutation(api.delivery.createDelivery, variables);
+    },
+  });
 
   const handleClick = () => {
-    deliveryMutation({
+    deliveryMutation.mutate({
       date: currentDate,
       staffName: staffName,
       totalBox: totalBox,
@@ -66,7 +77,7 @@ export default function SignUpForm() {
         sx={{ marginTop: 2 }}
         variant="contained"
       >
-        Next Step
+        {deliveryMutation.isPending ? <ScatterPlotIcon /> : "Next Step"}
       </Button>
     </Stack>
   );
