@@ -72,6 +72,7 @@ export default function SignUpForm() {
       />
       <Button
         onClick={handleClick}
+        disabled={deliveryMutation.isSuccess || deliveryMutation.isError}
         type="submit"
         fullWidth
         sx={{ marginTop: 2 }}
