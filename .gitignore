@@ -1,3 +1,5 @@
 node_modules
 .env.local
-convex/_generated
+.nitro
+.tanstack
+.vercel
