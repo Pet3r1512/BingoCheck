@@ -24,7 +24,8 @@ export default function SignUpForm() {
     }) => {
       return await convex.mutation(api.delivery.createDelivery, variables);
     },
-    onSuccess: () => {
+    onSuccess: (deliveryId) => {
+      localStorage.setItem("deliveryId", deliveryId);
       router.navigate({ to: "/bingo" });
     },
   });
