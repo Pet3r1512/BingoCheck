@@ -5,6 +5,7 @@ import useGetTodayDate from "~/hooks/useGetTodayDate";
 import ScatterPlotIcon from "@mui/icons-material/ScatterPlot";
 import { useMutation } from "@tanstack/react-query";
 import { useConvex } from "convex/react";
+import { useRouter } from "@tanstack/react-router";
 
 export default function SignUpForm() {
   const convex = useConvex();
@@ -13,6 +14,8 @@ export default function SignUpForm() {
   const [totalBox, setTotalBox] = useState<number>(0);
   const currentDate = useGetTodayDate();
 
+  const router = useRouter();
+
   const deliveryMutation = useMutation({
     mutationFn: async (variables: {
       date: string;
@@ -20,6 +23,9 @@ export default function SignUpForm() {
       totalBox: number;
     }) => {
       return await convex.mutation(api.delivery.createDelivery, variables);
+    },
+    onSuccess: () => {
+      router.navigate({ to: "/bingo" });
     },
   });
 
