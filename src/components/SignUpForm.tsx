@@ -84,7 +84,19 @@ export default function SignUpForm() {
         sx={{ marginTop: 2 }}
         variant="contained"
       >
-        {deliveryMutation.isPending ? <ScatterPlotIcon /> : "Next Step"}
+        {deliveryMutation.isPending ? (
+          <ScatterPlotIcon
+            sx={{
+              animation: "spin 1s linear infinite",
+              "@keyframes spin": {
+                "0%": { transform: "rotate(0deg)" },
+                "100%": { transform: "rotate(360deg)" },
+              },
+            }}
+          />
+        ) : (
+          "Next Step"
+        )}
       </Button>
     </Stack>
   );
