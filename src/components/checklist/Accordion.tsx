@@ -10,6 +10,8 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import BingoCheck from "./BingoCheck";
 import { Button, Stack } from "@mui/material";
+import SimpleDialog from "../SimpleDialog";
+import { useState } from "react";
 
 const SUPPLIERS = [
   "Blackmore",
@@ -56,7 +58,8 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function CustomizedAccordions() {
-  const [expanded, setExpanded] = React.useState<string | false>("panel1");
+  const [expanded, setExpanded] = useState<string | false>("panel1");
+  const [isDialogOpened, setIsDialogOpened] = useState<boolean>(false);
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -84,7 +87,13 @@ export default function CustomizedAccordions() {
               }}
             >
               <Typography component="span">{supplier}</Typography>
-              <Button>Edit</Button>
+              <Button
+                onClick={() => {
+                  setIsDialogOpened(true);
+                }}
+              >
+                Edit
+              </Button>
             </Stack>
           </AccordionSummary>
           <AccordionDetails>
@@ -94,6 +103,7 @@ export default function CustomizedAccordions() {
           </AccordionDetails>
         </Accordion>
       ))}
+      <SimpleDialog open={isDialogOpened} onClose={() => {}} />
     </div>
   );
 }
