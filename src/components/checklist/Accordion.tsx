@@ -10,6 +10,13 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import Checkbox from "./checkbox";
 
+const SUPPLIERS = [
+  "Blackmore",
+  "Pharmacare",
+  "Loreal (Haircare + Cosmetic)",
+  "Loreal(Roche and Cerave",
+];
+
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -57,51 +64,25 @@ export default function CustomizedAccordions() {
 
   return (
     <div>
-      <Accordion
-        expanded={expanded === "panel1"}
-        onChange={handleChange("panel1")}
-      >
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography component="span">Blackmore</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          {Array.from({ length: 100 }, (_, index) => (
-            <Checkbox key={index} number={index + 1} />
-          ))}
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel2"}
-        onChange={handleChange("panel2")}
-      >
-        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography component="span">PharmaCare</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel3"}
-        onChange={handleChange("panel3")}
-      >
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography component="span">Loreal</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+      {SUPPLIERS.map((supplier, index) => (
+        <Accordion
+          key={index}
+          expanded={expanded === `panel${index + 1}`}
+          onChange={handleChange(`panel${index + 1}`)}
+        >
+          <AccordionSummary
+            aria-controls={`panel${index + 1}d-content`}
+            id={`panel${index + 1}d-header`}
+          >
+            <Typography component="span">{supplier}</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            {Array.from({ length: 100 }, (_, checkboxIndex) => (
+              <Checkbox key={checkboxIndex} number={checkboxIndex + 1} />
+            ))}
+          </AccordionDetails>
+        </Accordion>
+      ))}
     </div>
   );
 }
