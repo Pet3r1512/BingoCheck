@@ -8,7 +8,7 @@ import MuiAccordionSummary, {
 } from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
-import Checkbox from "./checkbox";
+import BingoCheck from "./BingoCheck";
 
 const SUPPLIERS = [
   "Blackmore",
@@ -78,7 +78,7 @@ export default function CustomizedAccordions() {
           </AccordionSummary>
           <AccordionDetails>
             {Array.from({ length: 100 }, (_, checkboxIndex) => (
-              <Checkbox key={checkboxIndex} number={checkboxIndex + 1} />
+              <BingoCheck key={checkboxIndex} number={checkboxIndex + 1} />
             ))}
           </AccordionDetails>
         </Accordion>
