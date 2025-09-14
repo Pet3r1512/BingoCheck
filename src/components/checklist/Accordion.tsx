@@ -9,6 +9,7 @@ import MuiAccordionSummary, {
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import BingoCheck from "./BingoCheck";
+import { Button, Stack } from "@mui/material";
 
 const SUPPLIERS = [
   "Blackmore",
@@ -74,7 +75,17 @@ export default function CustomizedAccordions() {
             aria-controls={`panel${index + 1}d-content`}
             id={`panel${index + 1}d-header`}
           >
-            <Typography component="span">{supplier}</Typography>
+            <Stack
+              direction={"row"}
+              sx={{
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography component="span">{supplier}</Typography>
+              <Button>Edit</Button>
+            </Stack>
           </AccordionSummary>
           <AccordionDetails>
             {Array.from({ length: 100 }, (_, checkboxIndex) => (
